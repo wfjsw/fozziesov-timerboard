@@ -24,8 +24,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="timer in timers" :id="timer.id" :data-tags="timer.tags" :data-system="timer.system"
-                    :key="timer.id">
+                <tr v-for="timer in timers">
                     <td class="type">{{ timer.type }}</td>
                     <td class="system">
                         <a :href="`http://evemaps.dotlan.net/search?q=${timer.system}`">
@@ -38,13 +37,15 @@
                     <td class="remaining" style="width: 150px;"><span style="font-family: monospace;">
                         <Countdown :time-end="timer.time"/>
                     </span></td>
-                    <td class="defended" :class="{ 'text-warning': timer.defended < 0.6, 'text-success': timer.defended > 0.6 }">{{ timer.defended * 100 }}%</td>
+                    <td class="defended">
+                        <span :class="{ 'text-warning': timer.defended < 0.6, 'text-success': timer.defended > 0.6 }">{{ timer.defended * 100 }}%</span>
+                        (<span class="text-warning">{{ timer.an }}</span>/<span class="text-success">{{ timer.dn }}</span>)
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </template>
-
 <script>
 import CircleCounter from "./CircleCounter.vue";
 import Countdown from "./Countdown.vue";

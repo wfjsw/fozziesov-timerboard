@@ -20,6 +20,8 @@ export const useTimers = defineStore('timers', {
                 owner: names.maps[e[1]] ?? e[1],
                 time: moment.unix(e[4]).utc(),
                 defended: e[5],
+                an: Math.floor((e[5]*100-4)/7)+1,
+                dn: 14 - Math.floor((e[5]*100-4)/7),
             }))
         }
     },
