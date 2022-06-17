@@ -26,9 +26,8 @@
 </template>
 
 <script>
-import KnobControl from 'vue-knob-control/src/KnobControl.vue'
-import {useTimers} from "../stores/timers";
 import moment from "moment";
+import KnobControl from 'vue-knob-control/src/KnobControl.vue'
 
 export default {
     name: "CircleCounter",
@@ -36,15 +35,11 @@ export default {
         timers: {
             type: Array,
             required: true
+        },
+        now: {
+            type: Object,
+            required: true
         }
-    },
-    data() {
-        return {
-            now: moment(),
-        }
-    },
-    created() {
-        setInterval(() => this.now = moment(), 1000)
     },
     components: {
         KnobControl
@@ -60,7 +55,7 @@ export default {
             return this.timers.filter(n => n.time.isSameOrAfter(this.now)).length
         },
         start() {
-            return this.timers.filter(n => n.time.isBefore(this.now.subtract(4, 'hours'))).length
+            return this.timers.filter(n => n.time.isBefore(moment(this.now).subtract(4, 'hours'))).length
         },
     }
 }

@@ -17,14 +17,10 @@ export default {
             type: Object,
             required: true,
         },
-    },
-    data() {
-        return {
-            now: moment(),
-        }
-    },
-    created() {
-        setInterval(() => this.now = moment(), 1000)
+        now: {
+            type: Object,
+            required: true,
+        },
     },
     computed: {
         isPast() {

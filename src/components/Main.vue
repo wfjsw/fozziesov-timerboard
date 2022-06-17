@@ -1,5 +1,5 @@
 <template>
-    <CircleCounter :timers="timers"/>
+    <CircleCounter :timers="timers" :now="this.now"/>
     <div>
         <h3>
             <vue-tags-input id="filter" v-model="tag" :tags="tags" @tags-changed="newTags => tags = newTags" placeholder="Search..."/>
@@ -35,7 +35,7 @@
                     <td class="owner"><a :href="`http://evemaps.dotlan.net/search?q=${timer.owner}`">{{ timer.owner }}</a></td>
                     <td class="time">{{ timer.time.format('YYYY-MM-DD HH:mm:ss') }}</td>
                     <td class="remaining" style="width: 150px;"><span style="font-family: monospace;">
-                        <Countdown :time-end="timer.time"/>
+                        <Countdown :time-end="timer.time" :now="this.now"/>
                     </span></td>
                     <td class="defended">
                         <span :class="{ 'text-warning': timer.defended < 0.6, 'text-success': timer.defended > 0.6 }">{{ timer.defended * 100 }}%</span>
@@ -50,6 +50,7 @@
 import CircleCounter from "./CircleCounter.vue";
 import Countdown from "./Countdown.vue";
 import VueTagsInput from '@sipec/vue3-tags-input';
+import moment from "moment";
 import {useTimers} from "../stores/timers";
 
 export default {
@@ -62,7 +63,11 @@ export default {
         return {
             tag: '',
             tags: [],
+            now: moment().utc(),
         }
+    },
+    created() {
+        setInterval(() => this.now = moment().utc(), 1000)
     },
     computed: {
         timers() {
@@ -81,6 +86,10 @@ export default {
 
 .table a {
     color: white;
+}
+
+.table td {
+    white-space: nowrap;
 }
 
 .vue-tags-input {
