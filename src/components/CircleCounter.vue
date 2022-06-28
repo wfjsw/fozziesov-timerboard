@@ -3,21 +3,21 @@
         <div class="circleboxcontainer">
             <div class="circlebox-small">
                 <KnobControl id="uncontested" :value="uncontested" class="dial" :readOnly="true" :strokeWidth="5"
-                       size="100%" primaryColor="#8B4513" secondaryColor="#282828" text-color="#8B4513"/>
+                       :max="max" size="100%" primaryColor="#8B4513" secondaryColor="#282828" text-color="#8B4513"/>
                 <p class="label" style="color: #8B4513">Uncontested</p>
             </div>
             <div class="circlebox">
-                <KnobControl id="active" :value="active" class="dial" :readOnly="true" :strokeWidth="5"
+                <KnobControl id="active" :value="active" class="dial" :readOnly="true" :strokeWidth="5" :max="max"
                              size="100%" primaryColor="#ff1a1a" secondaryColor="#282828" text-color="#ff1a1a"/>
                 <p class="label" style="color: #ff1a1a">Active</p>
             </div>
             <div class="circlebox">
-                <KnobControl id="upcoming" :value="upcoming" class="dial" :readOnly="true" :strokeWidth="5"
+                <KnobControl id="upcoming" :value="upcoming" class="dial" :readOnly="true" :strokeWidth="5" :max="max"
                              size="100%" primaryColor="#87CEEB" secondaryColor="#282828" text-color="#87CEEB"/>
                 <p class="label" style="color: #87CEEB">Upcoming</p>
             </div>
             <div class="circlebox-small">
-                <KnobControl id="start" :value="start" class="dial" :readOnly="true" :strokeWidth="5"
+                <KnobControl id="start" :value="start" class="dial" :readOnly="true" :strokeWidth="5" :max="max"
                              size="100%" primaryColor="#FF8C00" secondaryColor="#282828" text-color="#FF8C00"/>
                 <p class="label" style="color: #FF8C00">Start in &lt;4hrs</p>
             </div>
@@ -56,6 +56,9 @@ export default {
         },
         start() {
             return this.timers.filter(n => n.time.isBefore(moment(this.now).subtract(4, 'hours'))).length
+        },
+        max() {
+            return Math.max(this.timers.length, 30)
         },
     }
 }
