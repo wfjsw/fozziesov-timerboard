@@ -5,7 +5,7 @@ import {faCalendarDays} from '@fortawesome/free-regular-svg-icons/faCalendarDays
 <template>
     <nav class="navbar navbar-expand-md bg-dark">
         <div class="container">
-            <a class="navbar-brand text-white" href="/"> <FontAwesomeIcon :icon="faCalendarDays"/> FozzieSov Timerboard </a>
+            <a class="navbar-brand" href="/"> <FontAwesomeIcon :icon="faCalendarDays"/> FozzieSov Timerboard </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navSpecialContent" aria-controls="navSpecialContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,7 +19,7 @@ import {faCalendarDays} from '@fortawesome/free-regular-svg-icons/faCalendarDays
 </template>
 
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import FontAwesomeIcon from '@fortawesome/vue-fontawesome/src/components/FontAwesomeIcon.js'
 
 export default {
     name: "Nav",
@@ -32,5 +32,10 @@ export default {
 <style scoped>
     .navbar {
         margin-bottom: 25px;
+    }
+
+    .navbar-brand {
+        --bs-text-opacity: 1;
+        color: rgba(var(--bs-white-rgb), var(--bs-text-opacity)) !important;
     }
 </style>

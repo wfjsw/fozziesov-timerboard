@@ -16,6 +16,7 @@
                 <tr>
                     <th>Type</th>
                     <th>System</th>
+                    <th>Constell.</th>
                     <th>Region</th>
                     <th>Owner</th>
                     <th>Time</th>
@@ -27,12 +28,21 @@
                 <tr v-for="timer in timers">
                     <td class="type">{{ timer.type }}</td>
                     <td class="system">
-                        <a :href="`http://evemaps.dotlan.net/search?q=${timer.system}`">
+                        <a :href="`http://evemaps.dotlan.net/map/${timer.region}/${timer.system}`" target="_blank">
                             {{ timer.system }}
                         </a>
                     </td>
-                    <td class="region">{{ timer.region }}</td>
-                    <td class="owner"><a :href="`http://evemaps.dotlan.net/search?q=${timer.owner}`">{{ timer.owner }}</a></td>
+                    <td class="constellation">
+                        <a :href="`http://evemaps.dotlan.net/map/${timer.region}/${timer.constellation}`" target="_blank">
+                            {{ timer.constellation }}
+                        </a>
+                    </td>
+                    <td class="region">
+                        <a :href="`http://evemaps.dotlan.net/map/${timer.region}`" target="_blank">
+                            {{ timer.region }}
+                        </a>
+                    </td>
+                    <td class="owner"><a :href="`http://evemaps.dotlan.net/alliance/${timer.owner}`" target="_blank">{{ timer.owner }}</a></td>
                     <td class="time">{{ timer.time.format('YYYY-MM-DD HH:mm:ss') }}</td>
                     <td class="remaining" style="width: 150px;"><span style="font-family: monospace;">
                         <Countdown :time-end="timer.time" :now="this.now"/>
@@ -49,7 +59,7 @@
 <script>
 import CircleCounter from "./CircleCounter.vue";
 import Countdown from "./Countdown.vue";
-import VueTagsInput from '@sipec/vue3-tags-input';
+import VueTagsInput from '@sipec/vue3-tags-input/vue-tags-input/vue-tags-input.vue';
 import moment from "moment";
 import {useTimers} from "../stores/timers";
 

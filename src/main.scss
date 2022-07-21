@@ -3,42 +3,56 @@
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/mixins";
-@import "bootstrap/scss/utilities";
+//@import "bootstrap/scss/utilities";
 
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
-@import "bootstrap/scss/type";
+//@import "bootstrap/scss/type";
 @import "bootstrap/scss/containers";
-@import "bootstrap/scss/grid";
+//@import "bootstrap/scss/grid";
 @import "bootstrap/scss/tables";
-@import "bootstrap/scss/dropdown";
-@import "bootstrap/scss/nav";
+//@import "bootstrap/scss/dropdown";
+//@import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
 
-@import "bootstrap/scss/helpers";
-@import "bootstrap/scss/utilities/api";
+//@import "bootstrap/scss/helpers";
+//@import "bootstrap/scss/utilities/api";
+
+//@import "@fortawesome/fontawesome-svg-core/styles.css";
+
+svg:not(:root).svg-inline--fa, svg:not(:host).svg-inline--fa {
+    overflow: visible;
+    box-sizing: content-box;
+}
+
+.svg-inline--fa {
+    display: var(--fa-display, inline-block);
+    height: 1em;
+    overflow: visible;
+    vertical-align: -.125em;
+}
 
 .navbar {
-  &.bg-primary {
-    border: 1px solid $gray-700;
-  }
+    &.bg-primary {
+        border: 1px solid $gray-700;
+    }
 
-  &.bg-dark {
-    background-color: $body-bg !important;
-    border: 1px solid $gray-700;
-  }
+    &.bg-dark {
+        background-color: $body-bg !important;
+        border: 1px solid $gray-700;
+    }
 
-  &.bg-light {
-    background-color: $gray-500 !important;
-  }
+    &.bg-light {
+        background-color: $gray-500 !important;
+    }
 
-  &.fixed-top {
-    border-width: 0 0 1px;
-  }
+    &.fixed-top {
+        border-width: 0 0 1px;
+    }
 
-  &.fixed-bottom {
-    border-width: 1px 0 0;
-  }
+    &.fixed-bottom {
+        border-width: 1px 0 0;
+    }
 }
 
 // Buttons
@@ -74,23 +88,23 @@
 
 .nav-tabs,
 .nav-pills {
-  .nav-link {
-    color: $white;
+    .nav-link {
+        color: $white;
 
-    &:hover {
-      background-color: $gray-700;
-    }
+        &:hover {
+            background-color: $gray-700;
+        }
 
-    &.disabled,
-    &.disabled:hover {
-      background-color: transparent;
-      color: $nav-link-disabled-color;
-    }
+        &.disabled,
+        &.disabled:hover {
+            background-color: transparent;
+            color: $nav-link-disabled-color;
+        }
 
-    &.active {
-      background-color: $primary;
+        &.active {
+            background-color: $primary;
+        }
     }
-  }
 }
 
 //.breadcrumb {
@@ -138,9 +152,9 @@
 
 .list-group-item-action {
 
-  &:hover {
-    border-color: $primary;
-  }
+    &:hover {
+        border-color: $primary;
+    }
 }
 
 //.popover {
@@ -148,3 +162,24 @@
 //    border-bottom: none;
 //  }
 //}
+
+.text-success {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-success-rgb), var(--bs-text-opacity)) !important;
+}
+
+.text-info {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-info-rgb), var(--bs-text-opacity)) !important;
+}
+
+.text-warning {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-warning-rgb), var(--bs-text-opacity)) !important;
+}
+
+.text-danger {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-danger-rgb), var(--bs-text-opacity)) !important;
+}
+
